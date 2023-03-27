@@ -42,6 +42,9 @@ MonoBehaviour:
   - TakeDamage
   - TakeDamageRPC
   - DestroyObjectRPC
+  - DestroyProjectile
+  - ShowMuzzleFlashEffect
+  - DestroyProjectileRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

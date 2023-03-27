@@ -1,7 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviourPun
 {
     [SerializeField] private int damageAmount = 4;
     
@@ -12,6 +12,12 @@ public class Projectile : MonoBehaviour
            health.photonView.RPC("TakeDamage", RpcTarget.All, damageAmount);
         }
         
+        photonView.RPC("DestroyProjectileRPC", RpcTarget.All);
+    }
+    
+    [PunRPC]
+    private void DestroyProjectileRPC()
+    {
         PhotonNetwork.Destroy(gameObject);
     }
 }

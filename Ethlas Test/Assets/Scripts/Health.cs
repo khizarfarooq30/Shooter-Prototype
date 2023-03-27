@@ -1,10 +1,11 @@
 using Photon.Pun;
-using Photon.Pun.Demo.PunBasics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private ParticleSystem hitEffect;
+    
     [SerializeField] private Image healthFillImg;
     [SerializeField] private int maxHealth;
 
@@ -24,7 +25,8 @@ public class Health : MonoBehaviourPunCallbacks
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         
         healthFillImg.fillAmount = GetHealthAmountNormalized();
-
+        hitEffect.Play();
+        
         if (IsDead())
         {
             Debug.Log(photonView.Controller.NickName + "  is dead");
